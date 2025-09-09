@@ -11,8 +11,6 @@ MODEL_PATH = "/tmp/model.pkl"
 def download_release_asset():
     api_url = f"https://api.github.com/repos/{OWNER}/{REPO}/releases/latest"
     headers = {"Accept": "application/vnd.github+json"}
-    if GH_TOKEN:
-        headers["Authorization"] = f"Bearer {GH_TOKEN}"
     r = requests.get(api_url, headers=headers)
     r.raise_for_status()
     release = r.json()
