@@ -5,7 +5,7 @@ from pydantic import BaseModel
 OWNER = os.environ.get("GITHUB_OWNER", "vaibhavtamang12")
 REPO = os.environ.get("GITHUB_REPO", "kolam")
 ASSET_NAME = os.environ.get("GITHUB_ASSET_NAME", "model.pkl")
-GITHUB_TOKEN = GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 MODEL_PATH = "/tmp/model.pkl"
 
