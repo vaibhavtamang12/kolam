@@ -5,12 +5,13 @@ from pydantic import BaseModel
 OWNER = os.environ.get("GITHUB_OWNER", "vaibhavtamang12")
 REPO = os.environ.get("GITHUB_REPO", "kolam")
 ASSET_NAME = os.environ.get("GITHUB_ASSET_NAME", "model.pkl")
+GITHUB_TOKEN = GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 MODEL_PATH = "/tmp/model.pkl"
 
 def download_release_asset():
     api_url = f"https://api.github.com/repos/{OWNER}/{REPO}/releases/latest"
-    headers = {"Accept": "application/vnd.github+json"}
+    headers = {"Accept": "application/vnd.github+json", "Authorization": f"token {GITHUB_TOKEN}"}
     r = requests.get(api_url, headers=headers)
     r.raise_for_status()
     release = r.json()
